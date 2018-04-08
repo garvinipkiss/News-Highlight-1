@@ -5,4 +5,4 @@ from app import app
 @app.route('/')
 def index():
     message = 'News Highlight'
-    return render_template('index.html')
+    return render_template('index.html', message = message)
