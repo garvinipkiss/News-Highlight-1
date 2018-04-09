@@ -26,6 +26,18 @@ def get_news(source):
             news_results_list = get_news_response['sources']
             news_results = process_results(news_results_list)
     return news_results
+def get_articles(articles):
+    get_articles_url = articles_url.format(articles,api_key)
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
+
+        articles_results = None
+
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
+            articles_results = process_results(articles_results_list)
+    return articles_results
 
 def process_results(news_list):
     news_results = []
