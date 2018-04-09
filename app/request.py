@@ -52,3 +52,15 @@ def process_results(news_list):
         news_results.append(news_object)
 
     return news_results
+def process_results(articles_list):
+    articles_list = []
+    for articles_item in articles_list:
+        name = articles_item.get('source.name')
+        title = articles_item.get('title')
+        description = articles_item.get('description')
+        url = articles_item.get('url')
+        urlToImage = articles_item.get('urlToImage')
+        publishedAt = articles_item.get('publishedAt')
+
+        articles_object = Articles(name,title,description,url,urlToImage,publishedAt)
+        articles_results.append(articles_object)
