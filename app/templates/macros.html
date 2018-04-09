@@ -1,0 +1,13 @@
+{% macro displayNewsList(news_list) %}
+      {% for news in news_list %}
+      <li>
+      {{ news.name }}
+      {{ news.description }}
+      {{ news.url }}
+      {{ news.category }}
+      {{ news.language }}
+      {{ news.country }}
+    </li>
+      {% endfor %}
+
+{% endmacro %}

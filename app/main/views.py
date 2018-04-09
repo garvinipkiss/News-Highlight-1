@@ -8,7 +8,7 @@ import json
 @main.route('/')
 def index():
     # Getting news sources
-    news_sources = get_news('sources')
+    news_sources = get_news("business")
     title = 'Home - Welcome to the Greatest News Articles and Everything News Related Website Online'
     return render_template('index.html', title = title,sources = news_sources)
 
