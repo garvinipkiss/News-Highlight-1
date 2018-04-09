@@ -6,11 +6,12 @@ api_key = None
 headlines_url = None
 source_url = None
 everything_url = None
+articles_url = None
 
 def configure_request(app):
-    global api_key,headlines_url,everything_url,source_url
+    global api_key,headlines_url,everything_url,source_url,articles_url
     api_key = app.config['NEWS_API_KEY']
-    headlines_url = app.config['NEWS_HEADLINES_URL']
+    articles_url = app.config['NEWS_HEADLINES_URL']
     source_url = app.config['NEWS_SOURCE_URL']
 
 
@@ -27,7 +28,7 @@ def get_news(source):
             news_results = process_results(news_results_list)
     return news_results
 def get_articles(articles):
-    get_articles_url = articles_url.format(articles,api_key)
+    get_articles_url = articles_url.format(articles, api_key)
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
@@ -36,7 +37,7 @@ def get_articles(articles):
 
         if get_articles_response['articles']:
             articles_results_list = get_articles_response['articles']
-            articles_results = process_results(articles_results_list)
+            articles_results = process_resultss(articles_results_list)
     return articles_results
 
 def process_results(news_list):
@@ -50,9 +51,9 @@ def process_results(news_list):
         country = news_item.get('country')
         news_object = News(name,description,url,category,language,country)
         news_results.append(news_object)
-
     return news_results
-def process_results(articles_list):
+
+def process_resultss(articles_list):
     articles_list = []
     for articles_item in articles_list:
         name = articles_item.get('source.name')
@@ -63,4 +64,6 @@ def process_results(articles_list):
         publishedAt = articles_item.get('publishedAt')
 
         articles_object = Articles(name,title,description,url,urlToImage,publishedAt)
-        articles_results.append(articles_object)
+        articles_list.append(articles_object)
+
+    return articles_list

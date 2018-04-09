@@ -1,4 +1,3 @@
-{% import 'macros.html' as macro %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,14 +9,8 @@
         {% endif %}
     </head>
     <body>
-      <h3> SOURCES </h3>
-      <ul>
-        {{ macro.displayNewsList(sources) }}
-      </ul>
-
-      <h3> ARTICLES </h3>
-      <ul>
-      {{  macro.displayArticlesList(articles) }}
-    </ul>
+      <!-- Content block -->
+      {% block content %}
+      {% endblock %}
     </body>
 </html>

@@ -9,5 +9,16 @@
       {{ news.country }}
     </li>
       {% endfor %}
-
+      {% endmacro %}
+{% macro displayArticlesList(articles_list) %}
+      {% for articles in articles_list %}
+      <li>
+        {{ articles.name }}
+        {{ articles.title }}
+        {{ articles.description }}
+        {{ articles.url }}
+        {{ articles.urlToImage }}
+        {{ articles.publishedAt }}
+      </li>
+      {% endfor %}
 {% endmacro %}

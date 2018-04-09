@@ -4,7 +4,7 @@ class Config:
     General configuration parent class
     '''
     NEWS_SOURCE_URL='https://newsapi.org/v2/sources?category={}&apiKey={}'
-    NEWS_HEADLINES_URL='https://newsapi.org/v2/top-headlines?category={}&q={}&country={}&apiKey={}'
+    NEWS_HEADLINES_URL='https://newsapi.org/v2/top-headlines?category={}&apiKey={}'
     NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
 
 class ProdConfig(Config):
