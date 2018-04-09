@@ -4,7 +4,7 @@ class Config:
     '''
     NEWS_API_BASE_URL = 'https://newsapi.org/'
     NEWS_SOURCE_URL='https://newsapi.org/v2/sources?category={}&country={}&language={}&apiKey={}'
-    
+
     NEWS_HEADLINES_URL='https://newsapi.org/v2/top-headlines?category={}&q={}&country={}&apiKey={}'
     NEWS_EVERYTHING_URL='https://newsapi.org/v2/everything?q={}&apiKey={}'
 
@@ -28,3 +28,7 @@ class DevConfig(Config):
     '''
 
     DEBUG = True
+config_options  = {
+'development':DevConfig,
+'production':ProdConfig
+}

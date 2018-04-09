@@ -2,7 +2,7 @@ from app import app
 import urllib.request,json
 from .models import News
 
-News = news.News
+#News = news.News
 # Getting api key
 api_key = app.config['NEWS_API_KEY']
 
@@ -20,8 +20,7 @@ def get_news(sources):
         if get_news_response['results']:
             news_results_list = get_news_response['results']
             news_results = process_results(news_results)
-
-return news_results
+            return news_results
 
 def process_results(news_list):
     news_results = []
@@ -34,3 +33,8 @@ def process_results(news_list):
         category = news_item.get('category')
         language = news_item.get('language')
         country = news_item.get('country')
+
+        news_object = News(status,sources,name,description,url,category,language,country)
+        news_results.append(news_object)
+
+    return news_results
