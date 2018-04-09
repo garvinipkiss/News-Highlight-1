@@ -65,5 +65,4 @@ def process_resultss(articles_list):
 
         articles_object = Articles(name,title,description,url,urlToImage,publishedAt)
         articles_list.append(articles_object)
-
     return articles_list

@@ -1,13 +1,21 @@
 {% macro displayNewsList(news_list) %}
       {% for news in news_list %}
-      <li>
-      {{ news.name }}
-      {{ news.description }}
-      {{ news.url }}
-      {{ news.category }}
-      {{ news.language }}
-      {{ news.country }}
-    </li>
+      <ul>
+     <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 newspost">
+       <b>
+         <a href="{{ news.url }}">{{ news.name }}</a>
+       </b>
+       <br>Category:{{ news.category }}</br>
+       <i class="far fa-heart" title='Add to Favorite' style='color:black;'></i>
+       <blockquote>{{ news.description }}
+       </blockquote>
+       <br>Language:{{ news.language }}</br>
+       <br>Country:{{ news.country }}</br>
+       <small>
+         <a href="{{ news.url }}">View this source</a>
+       </small>
+     </div>
+   </ul>
       {% endfor %}
       {% endmacro %}
 {% macro displayArticlesList(articles_list) %}

@@ -1,6 +1,9 @@
 from flask import render_template, redirect, url_for,request
 from ..request import get_news,get_articles
 from . import main
+from .forms import SearchForm
+#Search = search.Search
+
 
 import json
 
