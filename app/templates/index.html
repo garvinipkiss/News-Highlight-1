@@ -12,15 +12,12 @@
     </head>
     <body>
       {% block content %}
+      <div>
       <h3> SOURCES </h3>
       <ul>
         {{ macro.displayNewsList(sources) }}
       </ul>
-
-      <h3> ARTICLES </h3>
-      <ul>
-      {{  macro.displayArticlesList(articles) }}
-    </ul>
-    {% endblock %}
+    </div>
+      
     </body>
 </html>

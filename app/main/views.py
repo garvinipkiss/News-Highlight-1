@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for,request
 from ..request import get_news,get_articles
 from . import main
-from .forms import SearchForm
+
 #Search = search.Search
 
 
@@ -11,9 +11,9 @@ import json
 @main.route('/')
 def index():
     # Getting news sources
-    news_sources = get_news("business")
+    news_sources = get_news("General")
     #getting articles
-    news_articles = get_articles("business")
+    news_articles = get_articles("General")
     title = 'Home - Welcome to the Greatest News Articles and Everything News Related Website Online'
     return render_template('index.html', title = title,sources = news_sources,articles = news_articles)
 

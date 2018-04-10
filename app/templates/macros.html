@@ -1,32 +1,45 @@
 {% macro displayNewsList(news_list) %}
-      {% for news in news_list %}
-      <ul>
-     <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 newspost">
-       <b>
-         <a href="{{ news.url }}">{{ news.name }}</a>
-       </b>
-       <br>Category:{{ news.category }}</br>
-       <i class="far fa-heart" title='Add to Favorite' style='color:black;'></i>
-       <blockquote>{{ news.description }}
-       </blockquote>
-       <br>Language:{{ news.language }}</br>
-       <br>Country:{{ news.country }}</br>
-       <small>
-         <a href="{{ news.url }}">View this source</a>
-       </small>
-     </div>
-   </ul>
-      {% endfor %}
+      {% for news in news_list | batch(3) %}
+
+       <div class="row">
+           {% for news in news %}
+           <div class="col-md-4">
+           <h2>{{ news.name }}</h2>
+           <p> {{ news.description }} </p>
+           <p><a class="btn btn-outline-primary" href="/news/{{news.id}}" role="button">View details &raquo;</a></p>
+           </div>
+       {% endfor %}
+       </div>
+
+       {% endfor %}
+
       {% endmacro %}
 {% macro displayArticlesList(articles_list) %}
       {% for articles in articles_list %}
-      <li>
-        {{ articles.name }}
-        {{ articles.title }}
-        {{ articles.description }}
-        {{ articles.url }}
-        {{ articles.urlToImage }}
-        {{ articles.publishedAt }}
-      </li>
+      div class="row">
+          {% for new in news %}
+          <div class="col-md-4">
+          <h2>{{ new.name }}</h2>
+          <p> {{ new.description }} </p>
+          <p><a class="btn btn-outline-primary" href="/news/{{news.id}}" role="button">View details &raquo;</a></p>
+          </div>
+      {% endfor %}
+      </div>
+
+
+      <ul>
+      <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 newspost">
+        <b>
+        <a href="{{ articles.url }}">{{ articles.name }}</a>
+        <br>Title:{{ articles.title }}</br>
+        <blockquote>{{ articles.description }}
+        </blockquote>
+        <br>{{ articles.urlToImage }}</br>
+        <br>{{ articles.publishedAt }}</br>
+        <small>
+          <a href="{{articles.url }}">View This Article</a>
+        </small>
+      </div>
+      </ul>
       {% endfor %}
 {% endmacro %}
