@@ -6,40 +6,25 @@
            <div class="col-md-4">
            <h2>{{ news.name }}</h2>
            <p> {{ news.description }} </p>
-           <p><a class="btn btn-outline-primary" href="/news/{{news.id}}" role="button">View details &raquo;</a></p>
+           <p><a class="btn btn-outline-primary" href="/news/{{news.name}}" role="button">View details &raquo;</a></p>
            </div>
-       {% endfor %}
+           {% endfor %}
        </div>
 
-       {% endfor %}
+        {% endfor %}
 
       {% endmacro %}
 {% macro displayArticlesList(articles_list) %}
       {% for articles in articles_list %}
-      div class="row">
-          {% for new in news %}
           <div class="col-md-4">
-          <h2>{{ new.name }}</h2>
-          <p> {{ new.description }} </p>
-          <p><a class="btn btn-outline-primary" href="/news/{{news.id}}" role="button">View details &raquo;</a></p>
+          <h2>{{ articles.title }}</h2>
+          <img src="{{articles.urlToImage}}" height="150px" width="200px">
+          <p> {{ articles.description }} </p>
+          <p><a class="btn btn-outline-primary" href="{{articles.url}}" role="button">View details &raquo;</a></p>
           </div>
-      {% endfor %}
-      </div>
 
+      {% endfor %}
 
       <ul>
-      <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 newspost">
-        <b>
-        <a href="{{ articles.url }}">{{ articles.name }}</a>
-        <br>Title:{{ articles.title }}</br>
-        <blockquote>{{ articles.description }}
-        </blockquote>
-        <br>{{ articles.urlToImage }}</br>
-        <br>{{ articles.publishedAt }}</br>
-        <small>
-          <a href="{{articles.url }}">View This Article</a>
-        </small>
-      </div>
-      </ul>
-      {% endfor %}
+
 {% endmacro %}
